@@ -17,6 +17,8 @@ range.addEventListener("input",(e)=>{
 function createDiv(){
     for(let i = 0; i < (rows * rows); i++){
         div = document.createElement('div');
+        div.id = i;
+        div.classList.add('childDiv');
         div.setAttribute("style",`width:${width}px; height:${height}px;`);
         divContainer.appendChild(div);
     }
