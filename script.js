@@ -78,10 +78,14 @@ function setWidth(){
 }
 function colorIt(e){
     if(rainbowMode){
-        let rainbowColors = ["#FF0000","#FFA500","#FFFF00","#008000",
-                            "#0000FF","#4B0082","#EE82EE"];
-        let randomIndex = Math.floor(Math.random() * rainbowColors.length - 1);
-        e.target.style.backgroundColor = rainbowColors[randomIndex];
+        // let rainbowColors = ["#FF0000","#FFA500","#FFFF00","#008000",
+        //                     "#0000FF","#4B0082","#EE82EE"];
+        // let randomIndex = Math.floor(Math.random() * rainbowColors.length - 1);
+        // e.target.style.backgroundColor = rainbowColors[randomIndex];
+        var redValue = Math.floor(Math.random()*255);
+        var greenValue = Math.floor(Math.random()*255);
+        var blueValue = Math.floor(Math.random()*255);
+        e.target.style.backgroundColor = 'rgb(' + redValue + ',' + greenValue + ',' + blueValue + ')';
     }
     else{
         e.target.style.backgroundColor = color;
