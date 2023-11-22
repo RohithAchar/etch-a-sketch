@@ -2,6 +2,7 @@ const divContainer = document.querySelector('.div-container');
 const range = document.querySelector('#pixels');
 const pixelsDisplay = document.querySelector('#pixels-display');
 const colorDOM = document.querySelector('#color');
+const clearButton = document.querySelector('#clearButton');
 
 let color = "#000";
 let rows = 16;
@@ -45,4 +46,15 @@ colorDOM.addEventListener('change',setColor);
 function setColor(e){
     console.log(e.target.value);
     color = e.target.value;
+}
+
+clearButton.addEventListener('click',clearColor);
+
+function clearColor(){
+    boxList = divContainer.childNodes;
+    boxList.forEach(box => {
+        if(box.id !== undefined){
+            box.style.backgroundColor = "#fff";
+        }
+    });
 }
