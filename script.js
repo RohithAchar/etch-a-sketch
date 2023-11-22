@@ -1,7 +1,9 @@
 const divContainer = document.querySelector('.div-container');
 const range = document.querySelector('#pixels');
 const pixelsDisplay = document.querySelector('#pixels-display');
+const colorDOM = document.querySelector('#color');
 
+let color = "#000";
 let rows = 16;
 let width = 960 / 16;
 let height = 960 / 16;
@@ -36,6 +38,11 @@ function setWidth(){
     width = height = 960 / rows;
 }
 function colorIt(e){
-    e.target.style.backgroundColor = "black";
+    e.target.style.backgroundColor = color;
 }
 
+colorDOM.addEventListener('change',setColor);
+function setColor(e){
+    console.log(e.target.value);
+    color = e.target.value;
+}
