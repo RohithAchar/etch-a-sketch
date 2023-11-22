@@ -18,7 +18,7 @@ function createDiv(){
     for(let i = 0; i < (rows * rows); i++){
         div = document.createElement('div');
         div.id = i;
-        div.addEventListener('click',(e)=>{console.log(e.target.id)});
+        div.addEventListener('mouseover',colorIt);
         div.setAttribute("style",`width:${width}px; height:${height}px;`);
         divContainer.appendChild(div);
     }
@@ -34,5 +34,8 @@ function setRangeValue(value){
 }
 function setWidth(){
     width = height = 960 / rows;
+}
+function colorIt(e){
+    e.target.style.backgroundColor = "black";
 }
 
