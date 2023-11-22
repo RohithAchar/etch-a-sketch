@@ -26,11 +26,13 @@ colorModeInput.addEventListener('click',()=>{
     colorMode = true;
     eraseMode = false;
     setButtonColor();
+    color = colorDOM.value;
 });
 eraseModeInput.addEventListener('click',()=>{
     colorMode = false;
     eraseMode = true;
     setButtonColor();
+    color = "#fff";
 });
 
 createDiv();
@@ -68,7 +70,6 @@ function colorIt(e){
 
 colorDOM.addEventListener('change',setColor);
 function setColor(e){
-    console.log(e.target.value);
     color = e.target.value;
 }
 
