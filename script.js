@@ -3,11 +3,35 @@ const range = document.querySelector('#pixels');
 const pixelsDisplay = document.querySelector('#pixels-display');
 const colorDOM = document.querySelector('#color');
 const clearButton = document.querySelector('#clearButton');
+const colorModeInput = document.querySelector('#color-mode-button');
+const eraseModeInput = document.querySelector('#erase-mode-button');
 
 let color = "#000";
 let rows = 16;
 let width = 960 / 16;
 let height = 960 / 16;
+let colorMode = true;
+let eraseMode = false;
+
+colorModeInput.style.backgroundColor = "#A1E8AF";
+
+function setButtonColor(){
+    colorMode ? colorModeInput.style.backgroundColor = "#A1E8AF" :
+                colorModeInput.style.backgroundColor = "#fff";
+    eraseMode ? eraseModeInput.style.backgroundColor = "#A1E8AF" :
+                eraseModeInput.style.backgroundColor = "#fff";
+}
+
+colorModeInput.addEventListener('click',()=>{
+    colorMode = true;
+    eraseMode = false;
+    setButtonColor();
+});
+eraseModeInput.addEventListener('click',()=>{
+    colorMode = false;
+    eraseMode = true;
+    setButtonColor();
+});
 
 createDiv();
 range.addEventListener("input",(e)=>{
