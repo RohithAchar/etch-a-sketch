@@ -5,6 +5,7 @@ const colorDOM = document.querySelector('#color');
 const clearButton = document.querySelector('#clearButton');
 const colorModeInput = document.querySelector('#color-mode-button');
 const eraseModeInput = document.querySelector('#erase-mode-button');
+const rainbowModeInput = document.querySelector('#rainbow-mode-button')
 
 let color = "#000";
 let rows = 16;
@@ -12,6 +13,7 @@ let width = 960 / 16;
 let height = 960 / 16;
 let colorMode = true;
 let eraseMode = false;
+let rainbowMode = false;
 
 colorModeInput.style.backgroundColor = "#A1E8AF";
 
@@ -20,19 +22,29 @@ function setButtonColor(){
                 colorModeInput.style.backgroundColor = "#fff";
     eraseMode ? eraseModeInput.style.backgroundColor = "#A1E8AF" :
                 eraseModeInput.style.backgroundColor = "#fff";
+    rainbowMode ? rainbowModeInput.style.backgroundColor = "#A1E8AF" :
+                  rainbowModeInput.style.backgroundColor = "#fff";
 }
 
 colorModeInput.addEventListener('click',()=>{
     colorMode = true;
     eraseMode = false;
+    rainbowMode = false;
     setButtonColor();
     color = colorDOM.value;
 });
 eraseModeInput.addEventListener('click',()=>{
     colorMode = false;
     eraseMode = true;
+    rainbowMode = false;
     setButtonColor();
     color = "#fff";
+});
+rainbowModeInput.addEventListener('click',()=>{
+    colorMode = false;
+    eraseMode = false;
+    rainbowMode = true;
+    setButtonColor();
 });
 
 createDiv();
@@ -65,7 +77,15 @@ function setWidth(){
     width = height = 960 / rows;
 }
 function colorIt(e){
-    e.target.style.backgroundColor = color;
+    if(rainbowMode){
+        let rainbowColors = ["#FF0000","#FFA500","#FFFF00","#008000",
+                            "#0000FF","#4B0082","#EE82EE"];
+        let randomIndex = Math.floor(Math.random() * rainbowColors.length - 1);
+        e.target.style.backgroundColor = rainbowColors[randomIndex];
+    }
+    else{
+        e.target.style.backgroundColor = color;
+    }
 }
 
 colorDOM.addEventListener('change',setColor);
@@ -83,3 +103,4 @@ function clearColor(){
         }
     });
 }
+
